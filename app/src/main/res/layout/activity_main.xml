@@ -4,7 +4,9 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#ffeeeeff"
         android:orientation="vertical"
+        android:padding="5dp"
         tools:context=".MainActivity">
     <com.edward.feng.circleimageview.view.CircleImageView
             android:id="@+id/girls01"
