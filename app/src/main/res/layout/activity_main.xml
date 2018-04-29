@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -7,23 +7,40 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
     <com.edward.feng.circleimageview.view.CircleImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@mipmap/girls01"
-            android:contentDescription="@string/app_name"/>
-    <com.edward.feng.circleimageview.view.CircleImageView
+            android:id="@+id/girls01"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@mipmap/girls02"
+            android:src="@mipmap/natural_beauty_01"
             android:contentDescription="@string/app_name"/>
     <com.edward.feng.circleimageview.view.CircleImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@mipmap/girls03"
-            android:contentDescription="@string/app_name"/>
+            android:id="@+id/girls02"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:src="@mipmap/natural_beauty_02"
+            android:contentDescription="@string/app_name"
+            android:layout_marginTop="93dp"/>
     <com.edward.feng.circleimageview.view.CircleImageView
+            android:id="@+id/girls03"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@mipmap/girls04"
+            android:src="@mipmap/natural_beauty_03"
+            android:layout_below="@id/girls02"
             android:contentDescription="@string/app_name"/>
-</LinearLayout>
+    <com.edward.feng.circleimageview.view.CircleImageView
+            android:id="@+id/girls04"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@mipmap/natural_beauty_05"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/app_name"/>
+    <com.edward.feng.circleimageview.view.CircleImageView
+            android:id="@+id/girls05"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:src="@mipmap/natural_beauty_04"
+            android:layout_below="@id/girls04"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/app_name"/>
+</RelativeLayout>

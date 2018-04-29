@@ -26,7 +26,6 @@ public class CircleImageView extends AppCompatImageView {
     private Paint paint;
     private Matrix matrix;
     private BitmapShader bitmapShader;
-    private boolean isMeasured = false;
 
     public CircleImageView(Context context) {
         this(context, null);
@@ -49,12 +48,9 @@ public class CircleImageView extends AppCompatImageView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        if (!isMeasured) {
-            width = getMeasuredWidth();
-            height = getMeasuredHeight();
-            radius = Math.min(width, height) / 2;
-            isMeasured = true;
-        }
+        width = getMeasuredWidth();
+        height = getMeasuredHeight();
+        radius = Math.min(width, height) / 2;
     }
 
     @Override
