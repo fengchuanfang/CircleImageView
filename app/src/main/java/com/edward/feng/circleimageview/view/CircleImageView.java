@@ -25,7 +25,6 @@ public class CircleImageView extends AppCompatImageView {
     private float radius;
     private Paint paint;
     private Matrix matrix;
-    private BitmapShader bitmapShader;
 
     public CircleImageView(Context context) {
         this(context, null);
@@ -55,19 +54,19 @@ public class CircleImageView extends AppCompatImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        initBitmapAndShader();
-        paint.setShader(bitmapShader);//将着色器设置给画笔
+        paint.setShader(initBitmapShader());//将着色器设置给画笔
         canvas.drawCircle(width / 2, height / 2, radius, paint);//使用画笔在画布上画圆
     }
 
     /**
      * 获取ImageView中资源图片的Bitmap，利用Bitmap初始化图片着色器,通过缩放矩阵将原资源图片缩放到铺满整个绘制区域，避免边界填充
      */
-    private void initBitmapAndShader() {
+    private BitmapShader initBitmapShader() {
         Bitmap bitmap = ((BitmapDrawable) getDrawable()).getBitmap();
-        bitmapShader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        BitmapShader bitmapShader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
         float scale = Math.max(width / bitmap.getWidth(), height / bitmap.getHeight());
         matrix.setScale(scale, scale);//将图片宽高等比例缩放，避免拉伸
         bitmapShader.setLocalMatrix(matrix);
+        return bitmapShader;
     }
 }
