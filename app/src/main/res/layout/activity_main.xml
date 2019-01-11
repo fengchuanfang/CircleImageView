@@ -12,7 +12,7 @@
             android:id="@+id/girls01"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@mipmap/natural_beauty_01"
+            android:src="@drawable/ic_android"
             android:contentDescription="@string/app_name"/>
     <com.edward.feng.circleimageview.view.CircleImageView
             android:id="@+id/girls02"

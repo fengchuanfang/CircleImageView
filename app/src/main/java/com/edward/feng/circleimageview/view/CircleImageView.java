@@ -8,6 +8,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
@@ -54,15 +55,24 @@ public class CircleImageView extends AppCompatImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        paint.setShader(initBitmapShader());//将着色器设置给画笔
-        canvas.drawCircle(width / 2, height / 2, radius, paint);//使用画笔在画布上画圆
+        Drawable drawable = getDrawable();
+        if (drawable == null) {
+            super.onDraw(canvas);
+            return;
+        }
+        if (drawable instanceof BitmapDrawable) {
+            paint.setShader(initBitmapShader((BitmapDrawable) drawable));//将着色器设置给画笔
+            canvas.drawCircle(width / 2, height / 2, radius, paint);//使用画笔在画布上画圆
+            return;
+        }
+        super.onDraw(canvas);
     }
 
     /**
      * 获取ImageView中资源图片的Bitmap，利用Bitmap初始化图片着色器,通过缩放矩阵将原资源图片缩放到铺满整个绘制区域，避免边界填充
      */
-    private BitmapShader initBitmapShader() {
-        Bitmap bitmap = ((BitmapDrawable) getDrawable()).getBitmap();
+    private BitmapShader initBitmapShader(BitmapDrawable drawable) {
+        Bitmap bitmap = drawable.getBitmap();
         BitmapShader bitmapShader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
         float scale = Math.max(width / bitmap.getWidth(), height / bitmap.getHeight());
         matrix.setScale(scale, scale);//将图片宽高等比例缩放，避免拉伸
